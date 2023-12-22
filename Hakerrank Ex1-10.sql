@@ -116,7 +116,7 @@ ORDER BY name_length DESC, city
 LIMIT 1;
 
 /*
-Ex10 Weather Observation Station 5
+Ex10 Weather Observation Station 6
 Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. 
 Your result cannot contain duplicates.
 */
@@ -124,17 +124,17 @@ Your result cannot contain duplicates.
 SELECT
 	DISTINCT city 
 FROM station 
-WHERE LOWER(city) LIKE ('a%') 
-	OR LOWER(city) LIKE('e%') 
-    OR LOWER(city) LIKE ('i%') 
-    OR LOWER(city) LIKE ('o%') 
-    OR LOWER(city) LIKE ('u%');
+WHERE city LIKE ('a%') 
+	OR city LIKE('e%') 
+    OR city LIKE ('i%') 
+    OR city LIKE ('o%') 
+    OR city LIKE ('u%');
     
 -- OR
 
 SELECT 
     DISTINCT city 
 FROM station 
-WHERE LOWER(city) REGEXP "^[aeiou]";
+WHERE city REGEXP "^[aeiou]";
 
 
