@@ -1,3 +1,5 @@
+# BASIC - MySQL
+
 /*
 Ex11 Weather Observation Station 7
 Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION. 
@@ -162,7 +164,7 @@ FROM employee
 ORDER BY name;
 
 /*
-Ex18
+Ex18 Employee Salaries
 Write a query that prints a list of employee names (i.e.: the name attribute) for employees 
 in Employee having a salary greater than 2000$ per month who have been employees for less than 10 months. 
 Sort your result by ascending employee_id.
@@ -174,4 +176,35 @@ FROM employee
 WHERE salary > 2000 AND months < 10
 ORDER BY employee_id;
 
+/*
+Ex19 Higher Than 75 Marks
+Query the Name of any student in STUDENTS who scored higher than 75 Marks. 
+Order your output by the last three characters of each name. 
+If two or more students both have names ending in the same last three characters 
+(i.e.: Bobby, Robby, etc.), secondary sort them by ascending ID.
+*/
 
+SELECT 
+	name 
+FROM students
+WHERE marks > 75
+ORDER BY RIGHT(name, 3), id;
+
+/*
+Ex20 Type of Triangle
+Write a query identifying the type of each record in the TRIANGLES table using its three side lengths. 
+Output one of the following statements for each record in the table:
+Equilateral: It's a triangle with 3 sides of equal length.
+Isosceles: It's a triangle with 2 sides of equal length.
+Scalene: It's a triangle with 3 sides of differing lengths.
+Not A Triangle: The given values of A, B, and C don't form a triangle.
+*/
+
+SELECT 
+    CASE  
+        WHEN a + b <= c OR b + c <= a OR c + a <= b THEN 'Not A Triangle'
+        WHEN a = b AND b = c THEN 'Equilateral'
+        WHEN a = b OR b = c OR c = a THEN 'Isosceles'
+        ELSE 'Scalene' 
+    END  
+FROM triangles;
